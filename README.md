@@ -1,7 +1,7 @@
 # Arquitectura hexagonal con Java 25 y Spring Boot
 
 Material del curso para una **sesión de 120 minutos**: aproximadamente 70 minutos de presentación y 50 minutos de debate.
-Público objetivo: desarrolladores Java experimentados que conozcan Spring Boot y la arquitectura clásica en capas.
+Público objetivo: estudiantes y desarrolladores Java experimentados que conozcan Spring Boot y la arquitectura clásica en capas.
 
 ## Contenido
 

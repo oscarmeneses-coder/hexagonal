@@ -2,9 +2,9 @@
 
 *Tres etapas: hexagonal pura, arquitectura limpia, DDD. Solo necesitas la primera para empezar.*
 
-La mayoría de las explicaciones de la arquitectura hexagonal muestran el conjunto completo de una sola vez: puertos, adaptadores, casos de uso, comandos, agregados, objetos de valor y eventos de dominio. Los lectores terminan pensando que el patrón es enorme, y los equipos lo rechazan porque "no necesitamos todo eso".
+La mayoría de las explicaciones de la arquitectura hexagonal muestran el conjunto completo de una sola vez: puertos, adaptadores, casos de uso, comandos, agregados, objetos de valor y eventos de dominio. Los estudiantes terminan pensando que el patrón es enorme, y los equipos lo rechazan porque "no necesitamos todo eso".
 
-El patrón en sí es sencillo. Casi todo lo que se asocia con él proviene de la Arquitectura Limpia o del Diseño Orientado a Dominios, que son decisiones independientes que se superponen. Este artículo lo desarrolla en tres etapas para que puedas ver qué aporta cada concepto y cuál es su coste. Los ejemplos de cada etapa provienen de tres proyectos ejecutables de Spring Boot que implementan el mismo servicio de pedidos con la misma API HTTP; los fragmentos se han acortado para facilitar la lectura.
+El patrón en sí es sencillo. Casi todo lo que se asocia con él, proviene de la Arquitectura Limpia o del Diseño Orientado a Dominios, que son decisiones independientes que se superponen. Este documento lo desarrolla en tres etapas para que puedas ver qué aporta cada concepto y cuál es su coste. Los ejemplos de cada etapa provienen de tres proyectos ejecutables de Spring Boot que implementan el mismo servicio de pedidos con la misma API HTTP; los fragmentos se han acortado para facilitar la lectura.
 
 ## El punto de partida
 
@@ -38,7 +38,7 @@ Para ser justos, este código no es descuidado. Devuelve un DTO, la entidad nunc
 
 Los cuatro problemas tienen una misma causa: el núcleo conoce el mundo exterior.
 
-**[ Insertar imagen aquí: `slides/img/schichten_en.png` ]**
+**![](././slides/img/schichten_es.svg)[`Capas` ]**
 
 *El punto de partida en capas. Los DTO se mueven hacia arriba, pero cada dependencia apunta hacia abajo, a la tecnología, y la entidad sirve como esquema y modelo de dominio al mismo tiempo.*
 
@@ -84,13 +84,14 @@ public interface PaymentPort {
 }
 ```
 
-The naming matters. The port is called `PaymentPort`, not `StripeClient`. If the provider shows through in the interface, the port is cut wrong. This is Dependency Inversion, applied consistently at every system boundary. Before: the service depends on `StripeClient` and will not compile without it. After: the service depends on an interface it owns, and the Stripe adapter implements that interface. The call still flows toward Stripe at runtime, but the compile-time dependency points inward.
+La nomenclatura importa. El puerto se llama `PaymentPort`, no `StripeClient`. Si el proveedor se muestra en la interfaz, el puerto está mal cortado. Esto es Inversión de Dependencias, aplicada consistentemente en cada límite del sistema. Antes: el servicio depende de `StripeClient` y no compilará sin él. Después: el servicio depende de una interfaz de su propiedad, y el adaptador Stripe implementa esa interfaz. La llamada sigue fluyendo hacia Stripe en tiempo de ejecución, pero la dependencia en tiempo de compilación apunta hacia adentro.
 
-**[ Insert image here: `slides/img/hexagon_en.png` ]**
+![](./slides/img/hexagon_es.svg)
+**[`Hexagonal` ]**
 
-*The whole pattern in one picture. The red dashed line on the right is the point: the call goes outward, the dependency points inward. On the left both directions coincide, which is why the driven side is the one that so often gets built wrong.*
+*Todo el patrón en una sola imagen. La línea discontinua roja de la derecha indica el punto clave: la llamada se dirige hacia afuera, mientras que la dependencia apunta hacia adentro. A la izquierda, ambas direcciones coinciden, razón por la cual el lado controlado es el que suele construirse incorrectamente.*
 
-The implementation of the driving port (inbound port) is plain Java. No `@Service`, no `@Transactional`, no Spring import. One configuration class wires core and framework together:
+La implementación del puerto de control (puerto de entrada) es Java puro. No `@Service`, no `@Transactional`, y no hay importación de Spring. Una clase de configuración conecta el núcleo y el framework:
 
 ```java
 @Configuration
@@ -103,13 +104,13 @@ class ApplicationConfiguration {
 }
 ```
 
-Transactions are technology, so a decorator wraps them around the driving port (inbound) instead of putting the annotation into the core. On the driven side (outbound), the persistence adapter implements `OrderRepository` with Spring Data behind it, mapping between the domain class and a separate JPA entity. The payment port has two adapters, a real one and an in-memory one activated by a Spring profile, so the whole application runs locally without any external service.
+Las transacciones son tecnología, por lo que un decorador las envuelve alrededor del puerto de entrada en lugar de colocar la anotación en el núcleo. En el lado de salida, el adaptador de persistencia se implementa `OrderRepository` con Spring Data, mapeando entre la clase de dominio y una entidad JPA independiente. El puerto de pago tiene dos adaptadores: uno real y otro en memoria activado por un perfil de Spring, de modo que toda la aplicación se ejecuta localmente sin ningún servicio externo.
 
-That is the entire pattern. A handful of interfaces, a handful of adapters, one wiring class.
+Ese es el patrón completo. Un puñado de interfaces, un puñado de adaptadores, una sola clase de cableado.
 
-## What you get
+## Lo que obtienes
 
-The payoff shows up in the test suite. The core is tested with two hand-written fakes, about forty lines each:
+La recompensa se aprecia en el conjunto de pruebas. El núcleo se prueba con dos falsificaciones escritas a mano, de unas cuarenta líneas cada una:
 
 ```java
 @Test
@@ -121,9 +122,9 @@ void doesNotSaveWhenPaymentFails() {
 }
 ```
 
-This runs in milliseconds without Spring. In the example project, the seven core tests take about 10 ms, while the full application smoke test takes close to two seconds. The point is not fast tests as such. The point is that the code with the highest rate of change, the business logic, gets the fastest feedback. In a typical `@SpringBootTest` suite it is exactly the other way around.
+Esto se ejecuta en milisegundos sin Spring. En el proyecto de ejemplo, las siete pruebas principales tardan unos 10 ms, mientras que la prueba de humo de la aplicación completa tarda casi dos segundos. La cuestión no son las pruebas rápidas en sí, sino que el código con mayor tasa de cambio, la lógica de negocio, recibe la retroalimentación más rápida. En una `@SpringBootTest` suite típica, ocurre justo lo contrario.
 
-The dependency rule itself becomes executable with ArchUnit:
+La regla de dependencia en sí misma se vuelve ejecutable con ArchUnit:
 
 ```java
 @ArchTest
@@ -133,13 +134,13 @@ static final ArchRule application_is_free_of_spring =
                         "org.springframework..", "jakarta.persistence..");
 ```
 
-Without such a test, any architecture erodes within a few sprints. Not out of malice, but because the shortcut import always wins under deadline pressure.
+Sin una prueba de este tipo, cualquier arquitectura se deteriora en cuestión de sprints. No por mala intención, sino porque la importación rápida siempre prevalece bajo la presión de los plazos de entrega.
 
-> **Worth pausing here.** Everything up to this point is relatively simple, and it makes your life as a developer easier rather than harder. The code stays lean, and so does your mental model: the technical particularities are factored out automatically, and you can concentrate fully on the business logic. And the strongest argument is testability. A core you can test in milliseconds, without Spring and without mocking foreign systems, is hard to beat.
+> **Vale la pena detenerse aquí.** Todo lo anterior es relativamente sencillo, lo que facilita la labor del desarrollador en lugar de complicarla. El código se mantiene conciso, al igual que el modelo mental: las particularidades técnicas se eliminan automáticamente, permitiendo concentrarse plenamente en la lógica de negocio. Y el argumento más sólido es la capacidad de prueba. Un núcleo que se puede probar en milisegundos, sin Spring y sin simular sistemas externos, es difícil de superar.
 
-## Stage 2: Use cases and commands
+## Stage 2: Casos de uso y comandos
 
-Clean Architecture keeps the same dependency rule, and the part of it that teams actually adopt adds structure to the driving side (the inbound ports). The book goes further, with output boundaries and presenters on the way back out, but almost nobody carries those into production. Instead of one `OrderService` interface, there is one port per use case: `PlaceOrderUseCase`, `CancelOrderUseCase`, `GetOrderQuery`. And instead of parameter lists, each use case takes a command object:
+La arquitectura limpia mantiene la misma regla de dependencia, y la parte que los equipos adoptan realmente añade estructura al lado impulsor (los puertos de entrada). El libro va más allá, con límites de salida y presentadores en el camino de regreso, pero casi nadie los implementa en producción. En lugar de una inbterfaz `OrderService`, hay un puerto por caso de uso: `PlaceOrderUseCase`, `CancelOrderUseCase`, `GetOrderQuery`. Y en lugar de listas de parámetros, cada caso de uso toma un objeto de comando:
 
 ```java
 public interface PlaceOrderUseCase {
@@ -165,15 +166,15 @@ public interface PlaceOrderUseCase {
 }
 ```
 
-With three methods on one interface, the split is theoretical. With twenty, every caller depends on the whole thing, and the split starts paying. Commands are worth it from about four parameters on: they name their fields, copy lists defensively, and validate themselves in the compact constructor. The cost: every use case now brings its own interface and its own service class. For CRUD-heavy services the pattern runs empty, which is why this is a stage and not a requirement.
+Con tres métodos en una interfaz, la división es teórica. Con veinte, cada llamador depende de la interfaz completa, y la división comienza a ser rentable. Los comandos valen la pena a partir de cuatro parámetros: nombran sus campos, copian listas de forma segura y se validan a sí mismos en el constructor compacto. El costo: cada caso de uso ahora trae consigo su propia interfaz y su propia clase de servicio. Para servicios con muchas operaciones CRUD, el patrón se ejecuta sin necesidad de una interfaz, por lo que esto es una etapa y no un requisito.
 
-> **A side note on reputation.** I suspect this stage is responsible for hexagonal architecture's reputation as boilerplate. Turning every read and write method into its own interface feels like overkill in many codebases, and a command object for each method on top of that is probably the point where most developers decided not to bother. That verdict then lands on the whole pattern, even though stage 1 never asked for any of it.
+> **Una nota al margen sobre la reputación.** Sospecho que esta etapa es responsable de la reputación de la arquitectura hexagonal como código repetitivo. Convertir cada método de lectura y escritura en su propia interfaz resulta excesivo en muchos casos, y añadir un objeto de comando para cada método es probablemente el punto en el que la mayoría de los desarrolladores decidieron no molestarse. Este veredicto recae entonces sobre todo el patrón, aunque la etapa 1 nunca lo exigió.
 
-## Stage 3: A domain model that defends itself
+## Stage 3: Un modelo de dominio que se defiende a sí mismo.
 
-Up to this point the domain class was a data holder with getters and setters, and the business rules lived in the service as a checklist. Anyone who builds an order without going through the service checks nothing. The order total was calculated in two places. Amount and currency traveled through the payment port as two loose parameters that the compiler cannot keep apart.
+Hasta este punto, la clase de dominio era un contenedor de datos con métodos get y set, y las reglas de negocio residían en el servicio como una lista de verificación. Cualquiera que creara un pedido sin pasar por el servicio no verificaba nada. El total del pedido se calculaba en dos lugares. El importe y la moneda se transmitían a través del puerto de pago como dos parámetros independientes que el compilador no podía diferenciar.
 
-DDD closes these gaps. Strictly speaking, this stage borrows only DDD's tactical patterns; strategic design (bounded contexts, ubiquitous language) is a topic of its own. The aggregate takes over the rules:
+DDD cierra estas brechas. Estrictamente hablando, esta etapa solo toma prestados los patrones tácticos de DDD; el diseño estratégico (contextos delimitados, lenguaje ubicuo) es un tema aparte. El agregado toma las reglas:
 
 ```java
 public class Order extends AggregateRoot {
@@ -195,9 +196,9 @@ public class Order extends AggregateRoot {
 }
 ```
 
-An `Order` that exists is valid. There are no setters. Value objects like `Money` and `OrderId` replace `BigDecimal` and `UUID`, so rounding and currency checks happen exactly once and arguments cannot be swapped. The application service shrinks to choreography. A business `if` inside an application service is now a review smell: the rule probably belongs in the aggregate.
+Un `Order` ue existe es válido. No hay setters. Los objetos de valor como `Money` y `OrderId` reemplazan a `BigDecimal` y `UUID`, por lo que las comprobaciones de redondeo y moneda se realizan exactamente una vez y los argumentos no se pueden intercambiar. El servicio de la aplicación se reduce a una coreografía. Un negocio `if` dentro de un servicio de aplicación ahora es un olor a revisión: la regla probablemente debería estar en el agregado.
 
-Domain events follow the same discipline. The aggregate collects them but does not publish them, because publishing would require a dependency on the outside. The application service publishes after saving, through a driven port (outbound). A second business context can then react without the first one knowing about it:
+Los eventos de dominio siguen la misma disciplina. El agregado los recopila, pero no los publica, ya que la publicación requeriría una dependencia externa. El servicio de aplicación los publica después de guardarlos, a través de un puerto controlado (saliente). Un segundo contexto de negocio puede reaccionar sin que el primero lo sepa.
 
 ```java
 @Component
@@ -211,35 +212,35 @@ class OrderPaidListener {                          // shipping, adapter.in.event
 }
 ```
 
-Spring dispatches by parameter type, buffered until the commit. New reactions can be added without touching the order context, and an ArchUnit rule keeps the boundary intact. If delivery must be guaranteed, an outbox adapter on the same event port writes the events into a table in the same transaction, and a relay delivers them at least once.
+Spring realiza el despacho por tipo de parámetro, con almacenamiento en búfer hasta la confirmación. Se pueden agregar nuevas reacciones sin modificar el contexto del pedido, y una regla de ArchUnit mantiene el límite intacto. Si se debe garantizar la entrega, un adaptador de bandeja de salida en el mismo puerto de evento escribe los eventos en una tabla dentro de la misma transacción, y un relé los entrega al menos una vez.
 
-## What I would not skip
+## Lo que no me saltaría
 
-The stages are choices you make per service. A few things are not.
+Las etapas son decisiones que tomas para cada servicio. Algunas cosas no lo son.
 
-Keep the dependency rule and enforce it with ArchUnit. Keep driven ports (outbound) for everything you do not want running in a test: foreign systems, the clock, randomness. And keep the persistence model separate from the domain model. Putting JPA annotations on the domain class looks like a shortcut, but it breaks the rule at its most important spot. JPA then dictates default constructors, mutability, and proxies, and dirty checking saves state nobody asked to save. The mapper is the price. Pay it.
+Mantén la regla de dependencia y aplícala con ArchUnit. Mantén puertos controlados (salientes) para todo lo que no quieras que se ejecute en una prueba: sistemas externos, el reloj, la aleatoriedad. Y mantén el modelo de persistencia separado del modelo de dominio. Poner anotaciones JPA en la clase de dominio parece un atajo, pero rompe la regla en su punto más importante. JPA entonces impone constructores predeterminados, mutabilidad y proxies, y la comprobación de cambios guarda un estado que nadie pidió guardar. El mapeador es el precio. Págalo.
 
 ## Notas de la experiencia del proyecto
 
-Two observations after using this in real projects. The testability is unbeatable, and by now I personally find this structure easier to work with than a layered architecture. The hard part is not the pattern. It is the other developers who are reluctant to follow the conventions. The pattern is less widely known than layering, so the same question comes up again and again: where does this class go?
+Dos observaciones tras usarlo en proyectos reales. La capacidad de prueba es insuperable, y personalmente, ahora encuentro esta estructura más fácil de manejar que una arquitectura por capas. La dificultad no reside en el patrón en sí, sino en la reticencia de los demás desarrolladores a seguir las convenciones. El patrón es menos conocido que la arquitectura por capas, por lo que surge la misma pregunta una y otra vez: ¿dónde se ubica esta clase?
 
-A few simple rules answer it in almost every case:
+Unas pocas reglas sencillas lo solucionan en casi todos los casos:
 
-- If it depends on a technology, it is an adapter behind a driven port (outbound). Database, HTTP client, message broker, mail: outside.
-- If it is a call from the outside into the business logic, it belongs behind a driving port (inbound), a use case or service interface.
-- For everything else, look at the import list. Only `java.*` and your own packages means core. A framework import means adapter.
-- Put the core into its own Maven or Gradle module. Then the dependency rule is enforced by the compiler, and cyclic dependencies cannot happen in the first place.
+- Si depende de una tecnología, es un adaptador detrás de un puerto controlado (saliente). Base de datos, cliente HTTP, message broker, correo electrónico: externo.
+- Si se trata de una llamada desde el exterior hacia la lógica de negocio, debe estar detrás de un puerto de entrada (inbound), un caso de uso o una interfaz de servicio.
+- Para todo lo demás, consulta la lista de importaciones. Solo `java.*` y tus propios paquetes significa core. Una importación de framework significa adapter.
+- Coloca el núcleo en su propio módulo Maven o Gradle. De esta forma, el compilador aplicará la regla de dependencias y se evitarán las dependencias cíclicas.
 
-> **A warning from experience.** Do not split that core further into one module per domain right away. You often want to share the domain model, cross dependencies show up anyway, and untangling them early costs more than it protects. One large core module is easier to start with; split it once the boundaries have proven stable.
+> **Una advertencia basada en la experiencia.** no divida ese núcleo en módulos individuales por dominio de inmediato. A menudo se desea compartir el modelo de dominio, las dependencias cruzadas surgen de todos modos, y desenredarlas prematuramente cuesta más de lo que protege. Es más fácil comenzar con un módulo central grande; divídalo una vez que los límites se hayan estabilizado.
 
-And when a rule still gets debated, encode it in ArchUnit. Then the build answers the question instead of a code review.
+Y cuando una regla siga siendo objeto de debate, incorpórela a ArchUnit. De esta forma, la compilación responderá a la pregunta en lugar de una revisión de código.
 
-> **One more shortcut that works in practice.** You can skip the inbound ports entirely and let the adapters reference the service classes directly. The services are technology neutral either way, so this is usually not a problem. Interfaces do buy you flexibility later, a second caller or a decorator slots in without touching the service, so I treat this as a matter of taste rather than a rule.
+> **Otro atajo que funciona en la práctica.** Puedes omitir por completo los puertos de entrada y dejar que los adaptadores hagan referencia directamente a las clases de servicio. Los servicios son tecnológicamente neutros en cualquier caso, así que esto no suele ser un problema. Las interfaces ofrecen flexibilidad posteriormente; un segundo llamador o un decorador se integra sin modificar el servicio, así que lo considero una cuestión de preferencia personal más que una regla.
 
-As for the stages: start with plain hexagonal and stay there for a while. Clean Architecture you can save yourself in most projects; the use case interfaces and the command objects rarely pay for what they cost. From DDD, the part worth taking early is the event decoupling. A second context that reacts to a domain event without the first one knowing about it solves a real problem, not a stylistic one.
+En cuanto a las etapas: empieza con un diseño hexagonal simple y mantente así un tiempo. La arquitectura limpia te resultará útil en la mayoría de los proyectos; las interfaces de casos de uso y los objetos de comando rara vez justifican su coste. Desde la perspectiva de DDD, la parte que vale la pena abordar desde el principio es el desacoplamiento de eventos. Un segundo contexto que reacciona a un evento de dominio sin que el primero lo sepa resuelve un problema real, no uno estilístico.
 
 ## Resumen
 
-Three sentences to take home. Dependencies point inward, everything else follows from that. The core owns its interfaces, which is why the port is named `PaymentPort` and not `StripeClient`. Clean Architecture and DDD are extension stages, not obligations, and each one answers a specific pain you should actually have before you pay for it.
+Tres frases para recordar. Las dependencias apuntan hacia adentro, todo lo demás se deriva de eso. El núcleo controla sus interfaces, por eso el puerto se llama `PaymentPort` y no `StripeClient`. La arquitectura limpia y DDD son etapas de extensión, no obligaciones, y cada una responde a un problema específico que deberías tener antes de pagar por ella.
 
-The three example projects (hexagonal-pure, hexagonal-clean, hexagonal-ddd) implement the same application at each stage, so a diff between two of them shows exactly what a concept costs and buys. The code, the slides, and a companion script are on GitHub: <>.
+Los tres proyectos de ejemplo (hexagonal-pure, hexagonal-clean, hexagonal-ddd) implementan la misma aplicación en cada etapa, por lo que una comparación entre dos de ellos muestra exactamente cuánto cuesta y qué se obtiene con cada concepto. El código, las diapositivas y un script complementario están disponibles en GitHub.

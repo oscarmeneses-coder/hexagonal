@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700">
+<defs>
+<marker id="arr" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#1c3d5a"/></marker>
+<marker id="arrG" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#8a9aa8"/></marker>
+<marker id="arrA" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#b3452b"/></marker>
+</defs>
+<rect width="1200" height="700" fill="#ffffff"/>
+<text x="430" y="36" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="19" fill="#1c3d5a" font-weight="700" text-anchor="middle">Arquitectura en capas — el punto de partida</text>
+<rect x="215.0" y="66" width="430" height="62" rx="7" fill="#f5f7f9" stroke="#1c3d5a" stroke-width="1.6"/>
+<text x="430" y="94.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#1c3d5a" font-weight="700" text-anchor="middle">UI</text>
+<text x="430" y="113.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11.5" fill="#6b7c8c" font-weight="normal" text-anchor="middle">Browser · Frontend</text>
+<rect x="215.0" y="162" width="430" height="62" rx="7" fill="#f5f7f9" stroke="#1c3d5a" stroke-width="1.6"/>
+<text x="430" y="190.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#1c3d5a" font-weight="700" text-anchor="middle">REST</text>
+<text x="430" y="209.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11.5" fill="#6b7c8c" font-weight="normal" text-anchor="middle">OrderController · @RestController</text>
+<rect x="215.0" y="258" width="430" height="62" rx="7" fill="#dbe6ef" stroke="#1c3d5a" stroke-width="2.2"/>
+<text x="430" y="279.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#1c3d5a" font-weight="700" text-anchor="middle">Service</text>
+<text x="430" y="297.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11.5" fill="#6b7c8c" font-weight="normal" text-anchor="middle">@Service · @Transactional</text>
+<text x="430" y="313.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11.5" fill="#b3452b" font-weight="600" text-anchor="middle">Lógica de negocio + DTO ↔ mapeo de entidad</text>
+<rect x="215.0" y="354" width="430" height="62" rx="7" fill="#f5f7f9" stroke="#1c3d5a" stroke-width="1.6"/>
+<text x="430" y="382.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#1c3d5a" font-weight="700" text-anchor="middle">Repository</text>
+<text x="430" y="401.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11.5" fill="#6b7c8c" font-weight="normal" text-anchor="middle">Spring Data JPA · OrderRepository</text>
+<rect x="215.0" y="450" width="430" height="62" rx="7" fill="#f5f7f9" stroke="#1c3d5a" stroke-width="1.6"/>
+<text x="430" y="471.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#1c3d5a" font-weight="700" text-anchor="middle">Persistence</text>
+<text x="430" y="489.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11.5" fill="#6b7c8c" font-weight="normal" text-anchor="middle">JPA / Hibernate · OrderEntity</text>
+<text x="430" y="505.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11.5" fill="#b3452b" font-weight="600" text-anchor="middle">Entidad = esquema Y modelo de dominio</text>
+<path d="M 310.0 557 A 120.0 11 0 0 1 550.0 557 L 550.0 593 A 120.0 11 0 0 1 310.0 593 Z" fill="#eef3f7" stroke="#1c3d5a" stroke-width="2"/>
+<ellipse cx="430" cy="557" rx="120.0" ry="11" fill="#dbe6ef" stroke="#1c3d5a" stroke-width="2"/>
+<text x="430" y="585.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#1c3d5a" font-weight="700" text-anchor="middle">Base de datos</text>
+<line x1="360" y1="131" x2="360" y2="159" stroke="#1c3d5a" stroke-width="2.2" marker-end="url(#arr)"/>
+<line x1="500" y1="159" x2="500" y2="131" stroke="#8a9aa8" stroke-width="1.8" stroke-dasharray="6 4" marker-end="url(#arrG)"/>
+<text x="516" y="149.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#6b7c8c" font-weight="600" text-anchor="start">JSON</text>
+<line x1="360" y1="227" x2="360" y2="255" stroke="#1c3d5a" stroke-width="2.2" marker-end="url(#arr)"/>
+<line x1="500" y1="255" x2="500" y2="227" stroke="#8a9aa8" stroke-width="1.8" stroke-dasharray="6 4" marker-end="url(#arrG)"/>
+<text x="516" y="245.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#6b7c8c" font-weight="600" text-anchor="start">OrderDto</text>
+<line x1="360" y1="323" x2="360" y2="351" stroke="#1c3d5a" stroke-width="2.2" marker-end="url(#arr)"/>
+<line x1="500" y1="351" x2="500" y2="323" stroke="#8a9aa8" stroke-width="1.8" stroke-dasharray="6 4" marker-end="url(#arrG)"/>
+<text x="516" y="341.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#6b7c8c" font-weight="600" text-anchor="start">OrderEntity</text>
+<line x1="360" y1="419" x2="360" y2="447" stroke="#1c3d5a" stroke-width="2.2" marker-end="url(#arr)"/>
+<line x1="500" y1="447" x2="500" y2="419" stroke="#8a9aa8" stroke-width="1.8" stroke-dasharray="6 4" marker-end="url(#arrG)"/>
+<text x="516" y="437.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#6b7c8c" font-weight="600" text-anchor="start">OrderEntity</text>
+<line x1="360" y1="515" x2="360" y2="543" stroke="#1c3d5a" stroke-width="2.2" marker-end="url(#arr)"/>
+<line x1="500" y1="543" x2="500" y2="515" stroke="#8a9aa8" stroke-width="1.8" stroke-dasharray="6 4" marker-end="url(#arrG)"/>
+<text x="516" y="533.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#6b7c8c" font-weight="600" text-anchor="start">SQL</text>
+<text x="344" y="149.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" fill="#1c3d5a" font-weight="normal" text-anchor="end">llama</text>
+<text x="590" y="149.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" fill="#6b7c8c" font-weight="normal" text-anchor="start">· fluye de vuelta</text>
+<line x1="872" y1="289.0" x2="655.0" y2="289.0" stroke="#b3452b" stroke-width="1.8" stroke-dasharray="6 4" marker-end="url(#arrA)"/>
+<text x="880" y="283.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#b3452b" font-weight="600" text-anchor="start">La lógica de negocio vive aquí —</text>
+<text x="880" y="301.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#b3452b" font-weight="600" text-anchor="start">y depende de todo lo que está debajo</text>
+<line x1="872" y1="481.0" x2="655.0" y2="481.0" stroke="#b3452b" stroke-width="1.8" stroke-dasharray="6 4" marker-end="url(#arrA)"/>
+<text x="880" y="475.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#b3452b" font-weight="600" text-anchor="start">La entidad sirve a dos señores:</text>
+<text x="880" y="493.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#b3452b" font-weight="600" text-anchor="start">Esquema de base de datos y modelo de dominio</text>
+<line x1="872" y1="575.0" x2="562.0" y2="575.0" stroke="#b3452b" stroke-width="1.8" stroke-dasharray="6 4" marker-end="url(#arrA)"/>
+<text x="880" y="569.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#b3452b" font-weight="600" text-anchor="start">La “fundación” —</text>
+<text x="880" y="587.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#b3452b" font-weight="600" text-anchor="start">todas las flechas terminan aquí</text>
+<text x="120" y="91.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#6b7c8c" font-weight="600" text-anchor="middle">Al menos:</text>
+<text x="120" y="109.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#6b7c8c" font-weight="normal" text-anchor="middle">Los DTOs viajan hacia arriba —</text>
+<text x="120" y="125.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#6b7c8c" font-weight="normal" text-anchor="middle">la entidad permanece debajo</text>
+<text x="120" y="141.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#6b7c8c" font-weight="normal" text-anchor="middle">la capa de servicio</text>
+<rect x="240" y="636" width="720" height="50" rx="8" fill="#f5f8fa" stroke="#1c3d5a" stroke-width="1.6"/>
+<text x="600" y="657" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#1c3d5a" font-weight="700" text-anchor="middle">Todas las dependencias apuntan hacia abajo — a la tecnología.</text>
+<text x="600" y="675" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#6b7c8c" font-weight="normal" text-anchor="middle">El mapeo de DTO hacia arriba no cambia nada: el núcleo descansa sobre JPA y la base de datos.</text>
+</svg>

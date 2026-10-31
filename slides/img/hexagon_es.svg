@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700">
+<defs>
+<marker id="arr" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#1c3d5a"/></marker>
+<marker id="arrG" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#8a9aa8"/></marker>
+<marker id="arrA" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#b3452b"/></marker>
+</defs>
+<rect width="1200" height="700" fill="#ffffff"/>
+<polygon points="600.0,104.0 788.8,213.0 788.8,431.0 600.0,540.0 411.2,431.0 411.2,213.0" fill="#eef3f7" stroke="#1c3d5a" stroke-width="2.5"/>
+<polygon points="600.0,210.0 697.0,266.0 697.0,378.0 600.0,434.0 503.0,378.0 503.0,266.0" fill="#dbe6ef" stroke="#1c3d5a" stroke-width="2"/>
+<text x="600" y="170" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#1c3d5a" font-weight="700" text-anchor="middle">Servicios de Aplicacion</text>
+<text x="600" y="189" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11.5" fill="#6b7c8c" font-weight="normal" text-anchor="middle">PlaceOrderService · CancelOrderService</text>
+<text x="600" y="310" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="19" fill="#1c3d5a" font-weight="700" text-anchor="middle">Dominio</text>
+<text x="600" y="332" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#22323f" font-weight="normal" text-anchor="middle">Order · Money · OrderLine</text>
+<text x="600" y="349" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" fill="#6b7c8c" font-weight="normal" text-anchor="middle">las reglas viven aquí</text>
+<text x="600" y="470" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#6b7c8c" font-weight="normal" text-anchor="middle">no Spring · no JPA · no HTTP</text>
+<text x="152" y="44" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="17" fill="#1c3d5a" font-weight="700" text-anchor="middle">Driving / Primary</text>
+<text x="152" y="63" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11.5" fill="#6b7c8c" font-weight="normal" text-anchor="middle">El mundo exterior inicia</text>
+<text x="1050" y="44" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="17" fill="#1c3d5a" font-weight="700" text-anchor="middle">Driven / Secondary</text>
+<text x="1050" y="63" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11.5" fill="#6b7c8c" font-weight="normal" text-anchor="middle">La aplicación necesita algo</text>
+<rect x="44.5" y="200.0" width="215" height="52" rx="7" fill="#f5f7f9" stroke="#1c3d5a" stroke-width="1.6"/>
+<text x="152" y="224" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#22323f" font-weight="600" text-anchor="middle">OrderController</text>
+<text x="152" y="241" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11.5" fill="#6b7c8c" font-weight="normal" text-anchor="middle">REST · @RestController</text>
+<line x1="262" y1="226" x2="327.20646197499235" y2="226" stroke="#1c3d5a" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="331.20646197499235" y="211.0" width="160" height="30" rx="15" fill="#ffffff" stroke="#1c3d5a" stroke-width="2"/>
+<text x="411.20646197499235" y="231" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#1c3d5a" font-weight="600" text-anchor="middle">PlaceOrderUseCase</text>
+<rect x="44.5" y="296.0" width="215" height="52" rx="7" fill="#fbfcfd" stroke="#8a9aa8" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="152" y="320" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#22323f" font-weight="600" text-anchor="middle">BatchJob / Scheduler</text>
+<text x="152" y="337" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11.5" fill="#6b7c8c" font-weight="normal" text-anchor="middle">mismo puerto, diferente desencadenante</text>
+<line x1="262" y1="322" x2="327.20646197499235" y2="322" stroke="#8a9aa8" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrG)"/>
+<rect x="331.20646197499235" y="307.0" width="160" height="30" rx="15" fill="#ffffff" stroke="#1c3d5a" stroke-width="2"/>
+<text x="411.20646197499235" y="327" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#1c3d5a" font-weight="600" text-anchor="middle">CancelOrderUseCase</text>
+<rect x="44.5" y="392.0" width="215" height="52" rx="7" fill="#fbfcfd" stroke="#8a9aa8" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="152" y="416" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#22323f" font-weight="600" text-anchor="middle">Código de prueba</text>
+<text x="152" y="433" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11.5" fill="#6b7c8c" font-weight="normal" text-anchor="middle">JUnit, sin Spring context</text>
+<line x1="262" y1="418" x2="327.20646197499235" y2="418" stroke="#8a9aa8" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrG)"/>
+<rect x="331.20646197499235" y="403.0" width="160" height="30" rx="15" fill="#ffffff" stroke="#1c3d5a" stroke-width="2"/>
+<text x="411.20646197499235" y="423" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#1c3d5a" font-weight="600" text-anchor="middle">GetOrderQuery</text>
+<text x="152" y="178" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11.5" fill="#6b7c8c" font-weight="600" text-anchor="middle">Adapter</text>
+<text x="294.6032309874962" y="212" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="10.5" fill="#6b7c8c" font-weight="normal" text-anchor="middle">llama a</text>
+<rect x="708.7935380250076" y="211.0" width="160" height="30" rx="15" fill="#ffffff" stroke="#1c3d5a" stroke-width="2"/>
+<text x="788.7935380250076" y="231" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#1c3d5a" font-weight="600" text-anchor="middle">Load- / SaveOrderPort</text>
+<rect x="932.5" y="200.0" width="235" height="52" rx="7" fill="#f5f7f9" stroke="#1c3d5a" stroke-width="1.6"/>
+<text x="1050" y="224" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#22323f" font-weight="600" text-anchor="middle">OrderPersistenceAdapter</text>
+<text x="1050" y="241" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11.5" fill="#6b7c8c" font-weight="normal" text-anchor="middle">→ PostgreSQL / H2</text>
+<line x1="872.7935380250076" y1="213" x2="930" y2="213" stroke="#1c3d5a" stroke-width="2" marker-end="url(#arr)"/>
+<line x1="930" y1="239" x2="872.7935380250076" y2="239" stroke="#b3452b" stroke-width="1.8" stroke-dasharray="6 4" marker-end="url(#arrA)"/>
+<rect x="708.7935380250076" y="307.0" width="160" height="30" rx="15" fill="#ffffff" stroke="#1c3d5a" stroke-width="2"/>
+<text x="788.7935380250076" y="327" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#1c3d5a" font-weight="600" text-anchor="middle">PaymentPort</text>
+<rect x="932.5" y="296.0" width="235" height="52" rx="7" fill="#f5f7f9" stroke="#1c3d5a" stroke-width="1.6"/>
+<text x="1050" y="320" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#22323f" font-weight="600" text-anchor="middle">PspPaymentAdapter</text>
+<text x="1050" y="337" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11.5" fill="#6b7c8c" font-weight="normal" text-anchor="middle">→ proveedor de pagos</text>
+<line x1="872.7935380250076" y1="309" x2="930" y2="309" stroke="#1c3d5a" stroke-width="2" marker-end="url(#arr)"/>
+<line x1="930" y1="335" x2="872.7935380250076" y2="335" stroke="#b3452b" stroke-width="1.8" stroke-dasharray="6 4" marker-end="url(#arrA)"/>
+<rect x="708.7935380250076" y="403.0" width="160" height="30" rx="15" fill="#ffffff" stroke="#1c3d5a" stroke-width="2"/>
+<text x="788.7935380250076" y="423" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#1c3d5a" font-weight="600" text-anchor="middle">OrderEventPublisher</text>
+<rect x="932.5" y="392.0" width="235" height="52" rx="7" fill="#f5f7f9" stroke="#1c3d5a" stroke-width="1.6"/>
+<text x="1050" y="416" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#22323f" font-weight="600" text-anchor="middle">SpringOrderEventPublisher</text>
+<text x="1050" y="433" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11.5" fill="#6b7c8c" font-weight="normal" text-anchor="middle">→ envío, broker (outbox)</text>
+<line x1="872.7935380250076" y1="405" x2="930" y2="405" stroke="#1c3d5a" stroke-width="2" marker-end="url(#arr)"/>
+<line x1="930" y1="431" x2="872.7935380250076" y2="431" stroke="#b3452b" stroke-width="1.8" stroke-dasharray="6 4" marker-end="url(#arrA)"/>
+<text x="1050" y="178" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11.5" fill="#6b7c8c" font-weight="600" text-anchor="middle">Adapter</text>
+<text x="901.3967690125038" y="196" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="10.5" fill="#6b7c8c" font-weight="normal" text-anchor="middle">llama a</text>
+<text x="901.3967690125038" y="264" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="10.5" fill="#b3452b" font-weight="normal" text-anchor="middle">implementa</text>
+<rect x="300" y="582" width="600" height="52" rx="8" fill="#f5f8fa" stroke="#1c3d5a" stroke-width="1.6"/>
+<text x="600" y="604" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#1c3d5a" font-weight="700" text-anchor="middle">La llamada va hacia afuera — la dependencia apunta hacia adentro.</text>
+<text x="600" y="622" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#6b7c8c" font-weight="normal" text-anchor="middle">Eso es por lo que el puerto vive en el núcleo y se llama PaymentPort, no StripeClient.</text>
+<line x1="10" y1="648" x2="1190" y2="648" stroke="#d8e2ea" stroke-width="1.2"/>
+<line x1="40" y1="666" x2="74" y2="666" stroke="#1c3d5a" stroke-width="2.4"/>
+<text x="82" y="670" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#22323f" font-weight="normal" text-anchor="start">dirección de llamada</text>
+<line x1="330" y1="666" x2="364" y2="666" stroke="#b3452b" stroke-width="2.4" stroke-dasharray="6 4"/>
+<text x="372" y="670" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#22323f" font-weight="normal" text-anchor="start">dependencia: el adaptador implementa el puerto</text>
+<line x1="740" y1="666" x2="774" y2="666" stroke="#8a9aa8" stroke-width="2.4" stroke-dasharray="6 4"/>
+<text x="782" y="670" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#22323f" font-weight="normal" text-anchor="start">posible sin tocar el núcleo</text>
+</svg>

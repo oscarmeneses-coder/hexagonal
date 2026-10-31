@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+<defs>
+<marker id="arrR" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#1c3d5a" /></marker>
+<marker id="arrL" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#1c3d5a" transform="rotate(180 5 5)"/></marker>
+<marker id="arrRR" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#b3452b" /></marker>
+<marker id="arrLR" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#b3452b" transform="rotate(180 5 5)"/></marker>
+<marker id="arrRG" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#8a9aa8" /></marker>
+<marker id="arrLG" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#8a9aa8" transform="rotate(180 5 5)"/></marker>
+</defs>
+<rect width="1200" height="630" fill="#ffffff"/>
+<text x="135.0" y="30" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="18" fill="#1c3d5a" font-weight="700" text-anchor="middle">Mundo exterior</text>
+<text x="135.0" y="48" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#6b7c8c" font-weight="normal" text-anchor="middle">JSON, SQL, APIs foráneas</text>
+<text x="500.0" y="30" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="18" fill="#1c3d5a" font-weight="700" text-anchor="middle">Modelo de adaptador</text>
+<text x="500.0" y="48" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#6b7c8c" font-weight="normal" text-anchor="middle">pertenece al adaptador</text>
+<text x="965.0" y="30" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="18" fill="#1c3d5a" font-weight="700" text-anchor="middle">Núcleo</text>
+<text x="965.0" y="48" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#6b7c8c" font-weight="normal" text-anchor="middle">Puerto + dominio</text>
+<line x1="10" y1="60" x2="1190" y2="60" stroke="#d8e2ea" stroke-width="1.5"/>
+<text x="300" y="30" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" fill="#8a9aa8" font-weight="normal" text-anchor="middle">el marco de trabajo</text>
+<text x="300" y="44" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" fill="#8a9aa8" font-weight="normal" text-anchor="middle">hace esto</text>
+<text x="700" y="30" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" fill="#1c3d5a" font-weight="700" text-anchor="middle">escrito por</text>
+<text x="700" y="44" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" fill="#1c3d5a" font-weight="700" text-anchor="middle">YOU</text>
+<text x="14" y="64.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" fill="#6b7c8c" font-weight="600" text-anchor="start">Solicitud</text>
+<rect x="10.0" y="69.0" width="250" height="54" rx="7" fill="#fbfcfd" stroke="#8a9aa8" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="135.0" y="94" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#22323f" font-weight="600" text-anchor="middle">Solicitud HTTP</text>
+<text x="135.0" y="112" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#6b7c8c" font-weight="normal" text-anchor="middle">JSON</text>
+<rect x="340.0" y="69.0" width="320" height="54" rx="7" fill="#f5f7f9" stroke="#6b7c8c" stroke-width="1.6"/>
+<text x="500.0" y="94" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#22323f" font-weight="600" text-anchor="middle">PlaceOrderRequest</text>
+<text x="500.0" y="112" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#6b7c8c" font-weight="normal" text-anchor="middle">@NotBlank · @Min — web DTO</text>
+<rect x="740.0" y="69.0" width="202.0" height="54" rx="7" fill="#eef3f7" stroke="#1c3d5a" stroke-width="1.6"/>
+<text x="841.0" y="94" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#22323f" font-weight="600" text-anchor="middle">PlaceOrderCommand</text>
+<text x="841.0" y="112" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#6b7c8c" font-weight="normal" text-anchor="middle">port.in</text>
+<rect x="988.0" y="69.0" width="202.0" height="54" rx="7" fill="#eef3f7" stroke="#1c3d5a" stroke-width="1.6"/>
+<text x="1089.0" y="94" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#22323f" font-weight="600" text-anchor="middle">Order · OrderLine · Money</text>
+<text x="1089.0" y="112" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#6b7c8c" font-weight="normal" text-anchor="middle">Dominio</text>
+<line x1="945.0" y1="96" x2="985.0" y2="96" stroke="#1c3d5a" stroke-width="2" marker-end="url(#arrR)"/>
+<circle cx="965.0" cy="96" r="13" fill="#1c3d5a"/>
+<text x="965.0" y="101" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#ffffff" font-weight="700" text-anchor="middle">2</text>
+<line x1="266" y1="96" x2="334" y2="96" stroke="#8a9aa8" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#arrRG)" marker-start="url(#arrLG)"/>
+<text x="300" y="84" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="10.5" fill="#8a9aa8" font-weight="normal" text-anchor="middle">Jackson</text>
+<line x1="666" y1="96" x2="734" y2="96" stroke="#1c3d5a" stroke-width="2" marker-end="url(#arrR)"/>
+<circle cx="700" cy="96" r="13" fill="#1c3d5a"/>
+<text x="700" y="101" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#ffffff" font-weight="700" text-anchor="middle">1</text>
+<text x="14" y="138.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" fill="#6b7c8c" font-weight="600" text-anchor="start">Respuesta</text>
+<rect x="10.0" y="143.0" width="250" height="54" rx="7" fill="#fbfcfd" stroke="#8a9aa8" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="135.0" y="168" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#22323f" font-weight="600" text-anchor="middle">Respuesta HTTP</text>
+<text x="135.0" y="186" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#6b7c8c" font-weight="normal" text-anchor="middle">JSON</text>
+<rect x="340.0" y="143.0" width="320" height="54" rx="7" fill="#f5f7f9" stroke="#6b7c8c" stroke-width="1.6"/>
+<text x="500.0" y="168" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#22323f" font-weight="600" text-anchor="middle">OrderResponse</text>
+<text x="500.0" y="186" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#6b7c8c" font-weight="normal" text-anchor="middle">web DTO</text>
+<rect x="740.0" y="143.0" width="450" height="54" rx="7" fill="#eef3f7" stroke="#1c3d5a" stroke-width="1.6"/>
+<text x="965.0" y="168" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#22323f" font-weight="600" text-anchor="middle">Order</text>
+<text x="965.0" y="186" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#6b7c8c" font-weight="normal" text-anchor="middle">Aggregate</text>
+<line x1="266" y1="170" x2="334" y2="170" stroke="#8a9aa8" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#arrRG)" marker-start="url(#arrLG)"/>
+<text x="300" y="158" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="10.5" fill="#8a9aa8" font-weight="normal" text-anchor="middle">Jackson</text>
+<line x1="734" y1="170" x2="668" y2="170" stroke="#1c3d5a" stroke-width="2" marker-end="url(#arrL)"/>
+<circle cx="700" cy="170" r="13" fill="#1c3d5a"/>
+<text x="700" y="175" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#ffffff" font-weight="700" text-anchor="middle">3</text>
+<text x="14" y="212.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" fill="#6b7c8c" font-weight="600" text-anchor="start">Caso de error</text>
+<rect x="10.0" y="217.0" width="250" height="54" rx="7" fill="#fbfcfd" stroke="#8a9aa8" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="135.0" y="242" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#22323f" font-weight="600" text-anchor="middle">HTTP 409 / 422</text>
+<text x="135.0" y="260" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#6b7c8c" font-weight="normal" text-anchor="middle">Status + Body</text>
+<rect x="340.0" y="217.0" width="320" height="54" rx="7" fill="#f5f7f9" stroke="#6b7c8c" stroke-width="1.6"/>
+<text x="500.0" y="242" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#22323f" font-weight="600" text-anchor="middle">ProblemDetail</text>
+<text x="500.0" y="260" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#6b7c8c" font-weight="normal" text-anchor="middle">OrderExceptionHandler</text>
+<rect x="740.0" y="217.0" width="450" height="54" rx="7" fill="#eef3f7" stroke="#1c3d5a" stroke-width="1.6"/>
+<text x="965.0" y="242" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#22323f" font-weight="600" text-anchor="middle">OrderNotCancellableException</text>
+<text x="965.0" y="260" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#6b7c8c" font-weight="normal" text-anchor="middle">error de negocio</text>
+<line x1="266" y1="244" x2="334" y2="244" stroke="#8a9aa8" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#arrRG)" marker-start="url(#arrLG)"/>
+<text x="300" y="232" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="10.5" fill="#8a9aa8" font-weight="normal" text-anchor="middle">Jackson</text>
+<line x1="734" y1="244" x2="668" y2="244" stroke="#1c3d5a" stroke-width="2" marker-end="url(#arrL)"/>
+<circle cx="700" cy="244" r="13" fill="#1c3d5a"/>
+<text x="700" y="249" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#ffffff" font-weight="700" text-anchor="middle">4</text>
+<text x="14" y="286.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" fill="#6b7c8c" font-weight="600" text-anchor="start">Persistencia</text>
+<rect x="10.0" y="291.0" width="250" height="54" rx="7" fill="#fbfcfd" stroke="#8a9aa8" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="135.0" y="316" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#22323f" font-weight="600" text-anchor="middle">Tablas</text>
+<text x="135.0" y="334" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#6b7c8c" font-weight="normal" text-anchor="middle">orders · order_lines</text>
+<rect x="340.0" y="291.0" width="320" height="54" rx="7" fill="#f5f7f9" stroke="#6b7c8c" stroke-width="1.6"/>
+<text x="500.0" y="316" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#22323f" font-weight="600" text-anchor="middle">OrderJpaEntity</text>
+<text x="500.0" y="334" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#6b7c8c" font-weight="normal" text-anchor="middle">+ OrderLineJpaEntity</text>
+<rect x="740.0" y="291.0" width="450" height="54" rx="7" fill="#eef3f7" stroke="#1c3d5a" stroke-width="1.6"/>
+<text x="965.0" y="316" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#22323f" font-weight="600" text-anchor="middle">Order</text>
+<text x="965.0" y="334" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#6b7c8c" font-weight="normal" text-anchor="middle">Aggregate</text>
+<line x1="266" y1="318" x2="334" y2="318" stroke="#8a9aa8" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#arrRG)" marker-start="url(#arrLG)"/>
+<text x="300" y="306" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="10.5" fill="#8a9aa8" font-weight="normal" text-anchor="middle">Hibernate</text>
+<line x1="734" y1="304" x2="668" y2="304" stroke="#1c3d5a" stroke-width="2" marker-end="url(#arrL)"/>
+<circle cx="700" cy="304" r="13" fill="#1c3d5a"/>
+<text x="700" y="309" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#ffffff" font-weight="700" text-anchor="middle">5</text>
+<line x1="666" y1="332" x2="734" y2="332" stroke="#1c3d5a" stroke-width="2" marker-end="url(#arrR)"/>
+<circle cx="700" cy="332" r="13" fill="#1c3d5a"/>
+<text x="700" y="337" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#ffffff" font-weight="700" text-anchor="middle">6</text>
+<text x="14" y="360.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" fill="#6b7c8c" font-weight="600" text-anchor="start">Pago</text>
+<rect x="10.0" y="365.0" width="250" height="54" rx="7" fill="#fbfcfd" stroke="#8a9aa8" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="135.0" y="390" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#22323f" font-weight="600" text-anchor="middle">PSP API</text>
+<text x="135.0" y="408" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#6b7c8c" font-weight="normal" text-anchor="middle">JSON</text>
+<rect x="340.0" y="365.0" width="320" height="54" rx="7" fill="#f5f7f9" stroke="#6b7c8c" stroke-width="1.6"/>
+<text x="500.0" y="390" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#22323f" font-weight="600" text-anchor="middle">ChargeRequest / -Response</text>
+<text x="500.0" y="408" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#6b7c8c" font-weight="normal" text-anchor="middle">PspPaymentAdapter</text>
+<rect x="740.0" y="365.0" width="450" height="54" rx="7" fill="#eef3f7" stroke="#1c3d5a" stroke-width="1.6"/>
+<text x="965.0" y="397" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#22323f" font-weight="600" text-anchor="middle">OrderId · Money · PaymentReference</text>
+<line x1="266" y1="392" x2="334" y2="392" stroke="#8a9aa8" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#arrRG)" marker-start="url(#arrLG)"/>
+<text x="300" y="380" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="10.5" fill="#8a9aa8" font-weight="normal" text-anchor="middle">Jackson</text>
+<line x1="734" y1="378" x2="668" y2="378" stroke="#1c3d5a" stroke-width="2" marker-end="url(#arrL)"/>
+<circle cx="700" cy="378" r="13" fill="#1c3d5a"/>
+<text x="700" y="383" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#ffffff" font-weight="700" text-anchor="middle">7</text>
+<line x1="666" y1="406" x2="734" y2="406" stroke="#1c3d5a" stroke-width="2" marker-end="url(#arrR)"/>
+<circle cx="700" cy="406" r="13" fill="#1c3d5a"/>
+<text x="700" y="411" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#ffffff" font-weight="700" text-anchor="middle">8</text>
+<text x="14" y="434.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" fill="#6b7c8c" font-weight="600" text-anchor="start">Eventos</text>
+<rect x="10.0" y="439.0" width="250" height="54" rx="7" fill="#fbfcfd" stroke="#8a9aa8" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="135.0" y="464" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#22323f" font-weight="600" text-anchor="middle">Broker</text>
+<text x="135.0" y="482" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#6b7c8c" font-weight="normal" text-anchor="middle">a través de la tabla de outbox</text>
+<rect x="340.0" y="439.0" width="320" height="54" rx="7" fill="#fdfefe" stroke="#b3452b" stroke-width="1.6"/>
+<text x="500.0" y="464" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#22323f" font-weight="600" text-anchor="middle">Carga útil del evento</text>
+<text x="500.0" y="482" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#6b7c8c" font-weight="normal" text-anchor="middle">falta en el ejemplo: el evento sale sin procesar</text>
+<rect x="740.0" y="439.0" width="450" height="54" rx="7" fill="#eef3f7" stroke="#1c3d5a" stroke-width="1.6"/>
+<text x="965.0" y="464" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#22323f" font-weight="600" text-anchor="middle">OrderPlaced · OrderPaid</text>
+<text x="965.0" y="482" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#6b7c8c" font-weight="normal" text-anchor="middle">Domain Events</text>
+<line x1="266" y1="466" x2="334" y2="466" stroke="#8a9aa8" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#arrRG)" marker-start="url(#arrLG)"/>
+<text x="300" y="454" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="10.5" fill="#8a9aa8" font-weight="normal" text-anchor="middle">Jackson</text>
+<line x1="734" y1="466" x2="668" y2="466" stroke="#b3452b" stroke-width="2" marker-end="url(#arrLR)"/>
+<circle cx="700" cy="466" r="13" fill="#b3452b"/>
+<text x="700" y="471" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#ffffff" font-weight="700" text-anchor="middle">9</text>
+<text x="14" y="508.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" fill="#6b7c8c" font-weight="600" text-anchor="start">Contexto vecino</text>
+<rect x="10.0" y="513.0" width="250" height="54" rx="7" fill="#fbfcfd" stroke="#8a9aa8" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="135.0" y="538" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#22323f" font-weight="600" text-anchor="middle">shipping</text>
+<text x="135.0" y="556" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#6b7c8c" font-weight="normal" text-anchor="middle">Shipment</text>
+<rect x="340.0" y="513.0" width="320" height="54" rx="7" fill="#f5f7f9" stroke="#6b7c8c" stroke-width="1.6"/>
+<text x="500.0" y="538" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#22323f" font-weight="600" text-anchor="middle">UUID orderId</text>
+<text x="500.0" y="556" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#6b7c8c" font-weight="normal" text-anchor="middle">OrderPaidListener</text>
+<rect x="740.0" y="513.0" width="450" height="54" rx="7" fill="#eef3f7" stroke="#1c3d5a" stroke-width="1.6"/>
+<text x="965.0" y="538" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#22323f" font-weight="600" text-anchor="middle">OrderPaid</text>
+<text x="965.0" y="556" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#6b7c8c" font-weight="normal" text-anchor="middle">Domain Event</text>
+<line x1="266" y1="540" x2="334" y2="540" stroke="#8a9aa8" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#arrRG)" marker-start="url(#arrLG)"/>
+<text x="300" y="528" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="10.5" fill="#8a9aa8" font-weight="normal" text-anchor="middle">llamada directa</text>
+<line x1="734" y1="540" x2="668" y2="540" stroke="#1c3d5a" stroke-width="2" marker-end="url(#arrL)"/>
+<circle cx="700" cy="540" r="13" fill="#1c3d5a"/>
+<text x="700" y="545" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#ffffff" font-weight="700" text-anchor="middle">10</text>
+<line x1="10" y1="584" x2="1190" y2="584" stroke="#d8e2ea" stroke-width="1.2"/>
+<line x1="14" y1="606" x2="48" y2="606" stroke="#8a9aa8" stroke-width="2.4" stroke-dasharray="5 4"/>
+<text x="56" y="610" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#22323f" font-weight="normal" text-anchor="start">manejado por el marco de trabajo (Jackson, Hibernate)</text>
+<line x1="400" y1="606" x2="434" y2="606" stroke="#1c3d5a" stroke-width="2.4"/>
+<text x="442" y="610" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#22323f" font-weight="normal" text-anchor="start">mapeo escrito a mano — 10 lugares</text>
+<line x1="770" y1="606" x2="804" y2="606" stroke="#b3452b" stroke-width="2.4"/>
+<text x="812" y="610" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#22323f" font-weight="normal" text-anchor="start">falta en el ejemplo: el objeto de dominio sale sin procesar a sistemas externos</text>
+</svg>
