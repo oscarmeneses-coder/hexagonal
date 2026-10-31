@@ -60,7 +60,7 @@ navegar,  **`P`** se abre el modo presentador con notas del orador y una vista p
 **Manualmente:**
 
 ```bash
-npx @marp-team/marp-cli slides/hexagonal-architecture-core_en.md --preview
+npx @marp-team/marp-cli slides/hexagonal-architecture-core_es.md --preview
 # or as a local server
 npx @marp-team/marp-cli slides/ --server
 ```
@@ -78,13 +78,12 @@ Export via the command palette (`Marp: Export Slide Deck…`).
 **Command line:**
 
 ```bash
-npx @marp-team/marp-cli slides/hexagonal-architecture-pitfalls_en.md --pdf --allow-local-files
-npx @marp-team/marp-cli slides/hexagonal-architecture-pitfalls_en.md --html
-npx @marp-team/marp-cli slides/hexagonal-architecture-pitfalls_en.md --pptx   # if PowerPoint is needed
+npx @marp-team/marp-cli slides/hexagonal-architecture-pitfalls_es.md --pdf --allow-local-files
+npx @marp-team/marp-cli slides/hexagonal-architecture-pitfalls_es.md --html
+npx @marp-team/marp-cli slides/hexagonal-architecture-pitfalls_es.md --pptx   # if PowerPoint is needed
 ```
 
-For presenter mode with speaker notes: export `--html` and press `P` in the
-browser. The notes live as HTML comments inside the slides.
+Para el modo de presentación con notas del orador: exporta a `--html` y pulsa «P» en el navegador. Las notas se incluyen como comentarios HTML dentro de las diapositivas.
 
 ## Ejecutando un proyecto de ejemplo (stage 3, `hexagonal-ddd`)
 
