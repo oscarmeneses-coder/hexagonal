@@ -33,14 +33,14 @@ style: |
 <!-- _class: lead -->
 <!-- _paginate: false -->
 
-# Hexagonal Architecture - Drawbacks
+# Hexagonal Architecture - inconvenientes
 
-## Ports & Adapters with a Practical Example
-### Java 21 · Spring Boot 3.5
+## Puertos y adaptadores con un ejemplo práctico
+### Java 25 · Spring Boot 4.1
 
 <br>
 
-<span class="muted">60 minutes: ~35 minutes input, ~25 minutes discussion</span>
+<span class="muted">60 minutos: ~35 minutos de información, ~25 minutos de debate.</span>
 
 <!--
 Welcome. Two sentences on the setup: the code we're about to see is a
@@ -53,33 +53,33 @@ second half.
 -->
 ---
 
-## What all of this costs
+## Lo que cuesta todo esto
 
 <div class="cols">
 <div>
 
-**More files**
-The "place order" use case touches domain, port, service, DTO, mapper, adapter.
+**Más archivos**
+El caso de uso "realizar pedido" afecta al dominio, puerto, servicio, DTO, mappper, adapter.
 
 **Mappers**
-Between web DTO, JPA entity, and domain object — at least two translations per direction.
+Entre DTO web, entidad JPA y objeto de dominio: al menos dos traducciones por dirección.
 
 </div>
 <div>
 
-**Indirection**
-"Who actually implements this?" becomes a standard IDE move.
+**Indirección**
+"¿Quién implementa esto realmente?" se convierte en una práctica habitual en los entornos de desarrollo integrados (IDE).
 
-**Barrier to entry**
-New team members need the map, otherwise they guess where to put their code.
+**Barrera de entrada**
+Los nuevos miembros del equipo necesitan el mapa; de lo contrario, tendrán que adivinar dónde colocar su código.
 
 </div>
 </div>
 
 <br>
 
-> The price is real and often downplayed. It is roughly constant —
-> the benefit grows with the lifespan and complexity of the business logic.
+> El precio es real y a menudo se subestima. Es prácticamente constante; el beneficio aumenta con la duración 
+> y la complejidad de la lógica empresarial.
 
 <!--
 Definitely keep this slide in. A talk that only shows advantages loses
@@ -92,38 +92,38 @@ The next slide follows directly from that.
 
 ---
 
-## What's annoying about the Clean Architecture model
+## ¿Qué es lo molesto del modelo de Arquitectura Limpia?
 
 <div class="cols">
 <div class="small">
 
-**One use case = six files**
-Port, command, service, decorator, DTO, mapper. For "change address".
+**Un caso de uso = seis archivos**
+Puerto, comando, servicio, decorador, DTO, mapper. Para "cambiar dirección".
 
-**An interface with exactly one implementation**
-The segregation is theoretical as long as there is only one caller.
+**Una interfaz con exactamente una implementación**
+La segregación es teórica siempre que haya un único llamador.
 
-**`Ctrl+Click` lands in the interface**
-Every navigation is one extra hop.
+**`Ctrl+Click` aterriza en la interfaz**
+Cada navegación es un salto adicional.
 
 </div>
 <div class="small">
 
-**Mapper maintenance**
-Touching a new field means four places: DTO, command, aggregate, entity.
+**Mantenimiento del Mapper**
+Tocar un nuevo campo significa cuatro lugares: DTO, comando, agregado, entidad.
 
-**CRUD use cases run empty**
-`repository.save(mapper.map(dto))` — the aggregate has no rule to protect at all.
+**Los casos de uso CRUD se ejecutan vacíos**
+`repository.save(mapper.map(dto))` — el agregado no tiene ninguna regla.
 
-**Onboarding**
-Without a map, the new colleague guesses where her code belongs.
+**Proceso de incorporación**
+Sin un mapa, la nueva compañera adivina dónde debe ir su código.
 
 </div>
 </div>
 
 <br>
 
-> The question is not "all or nothing", but: **which parts do I carry, and which don't I?**
+> La cuestión no es "todo o nada", sino: **¿qué partes llevo conmigo y cuáles no?**
 
 <!--
 This slide is important for credibility. If you only defend the pattern,
@@ -139,11 +139,11 @@ things derail.
 
 <!-- _footer: '' -->
 
-## Where mapping happens everywhere (at full build-out)
+## Donde el mapeo se realiza en todas partes (una vez finalizada la construcción)
 
 <style scoped>img { display: block; margin: 6px auto 0; }</style>
 
-![w:1080](img/mapping_en.svg)
+![w:1080](img/mapping_es.svg)
 
 <!--
 The map that's missing from almost every discussion. Two messages:
@@ -166,25 +166,25 @@ tuning knobs on the next slide.
 
 ---
 
-## Five tuning knobs — each adjustable individually
+## Cinco perillas de afinación, cada una ajustable individualmente.
 
 <style scoped>table { font-size: 18px; }</style>
 
 <div class="small">
 
-| Adjustment | What it saves | What it costs |
+| Ajuste | Lo que ahorra | Lo que cuesta |
 |---|---|---|
-| **Drop `port.in`**, use `@Service` classes directly | 2 files per use case | Controller depends on the class; Spring in the core |
-| **Drop command objects**, use plain parameters | 1 file per use case | Signatures grow; no self-validation |
-| **Spring Data directly** instead of load/save port | 3 files per aggregate | Database tests instead of unit tests; `Page<T>` in the core |
-| **`@Transactional` on the service** instead of decorator | 1 file per use case | Core no longer Spring-free |
-| **Web DTO = command** | 1 mapper | API and core are married |
+| **Elimina `port.in`**, usa las clases `@Service` directamente | 2  archivos por caso de uso | El controlador depende de la clase; Spring en el núcleo |
+| **Elimina los objetos de comando**, use plain parameters | 1  archivo por caso de uso | Las firmas crecen; no hay autovalidación. |
+| **Spring Data directamente** en lugar de cargar/guardar puerto | 3  archivos por caso de uso | Pruebas de base de datos en lugar de pruebas unitarias; `Page<T>` en el núcleo |
+| **`@Transactional` en el servicio** en lugar de decorador | 1  archivo por caso de uso | Core ya no está libre de Spring |
+| **DTO Web = comando** | 1 mapper | API y core están unidos. |
 
 </div>
 
 <br>
 
-> Last row only for internal APIs. **Not a tuning knob:** JPA entity as aggregate — that breaks the rule instead of loosening it.
+> La última fila es solo para API internas. **No es un parámetro de ajuste**: entidad JPA como agregado: eso rompe la regla en lugar de flexibilizarla.
 
 <!--
 This slide is the actual core of the answer to "this is too much for me".
@@ -209,7 +209,7 @@ That's the core; everything else is ceremony you can afford or not.
 
 ---
 
-## Where DDD events come into play here
+## Aquí es donde entran en juego los eventos DDD.
 
 <style scoped>pre { font-size: 15px; }</style>
 

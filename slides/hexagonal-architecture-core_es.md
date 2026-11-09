@@ -78,7 +78,7 @@ just a delta.
 
 ---
 
-## Las capas que todos conocemos
+## Etapa 1: Las capas que todos conocemos
 
 <style scoped>img { display: block; margin: 4px auto 0; }</style>
 
@@ -182,16 +182,16 @@ Spell it out on the audio track:
 
 ---
 
-## The idea (Alistair Cockburn, 2005)
+## La idea (Alistair Cockburn, 2005)
 
-> "Allow an application to equally be driven by users, programs, automated test
-> or batch scripts, and to be developed and tested in isolation from its
-> eventual run-time devices and databases."
+> "Permitir que una aplicación sea controlada indistintamente por usuarios, programas, pruebas automatizadas
+> o scripts por lotes, y que se desarrolle y pruebe de forma aislada de sus dispositivos y bases de datos
+> de ejecución finales."
 
 <br>
 
-- Original name: **Ports and Adapters**
-- The database is an **accessory**, not a foundation
+- Nombre original: **Puertos y adaptadores**
+- La base de datos es un **accesorio** , no un fundamento.
 
 <!--
 Cockburn 2005, "Hexagonal" was just the nickname - the number six means
@@ -208,11 +208,11 @@ understood half the talk.
 
 <!-- _footer: '' -->
 
-## The picture
+## La imagen
 
 <style scoped>img { display: block; margin: 4px auto 0; }</style>
 
-![w:1010](img/hexagon_en.svg)
+![w:1010](img/hexagon_es.svg)
 
 <!--
 Walk along the picture, left to right. The most important difference from
@@ -231,12 +231,12 @@ sentence from a moment ago.
 
 ---
 
-## Not all ports are the same
+## No todos los puertos son iguales
 
 <div class="cols">
 <div>
 
-### Driving Port (left)
+### Driving Port (izquierda)
 ```java
 public interface OrderService {
     UUID placeOrder(String customerId,
@@ -246,12 +246,12 @@ public interface OrderService {
     Order getOrder(UUID orderId);
 }
 ```
-Core implements · adapter calls
+Implementaciones en el core · El adaptador llama
 
 </div>
 <div>
 
-### Driven Port (right)
+### Driven Port (derecha)
 ```java
 public interface PaymentPort {
     String charge(UUID orderId,
@@ -260,14 +260,14 @@ public interface PaymentPort {
     void refund(String paymentReference);
 }
 ```
-Adapter implements · core calls
+Implementaciones en el adaptador · El core llama
 
 </div>
 </div>
 
 <br>
 
-> `PaymentPort`, not `StripeClient`.
+> `PaymentPort`, no `StripeClient`.
 
 <!--
 Here sits the most common misunderstanding: Just putting "interfaces in front
@@ -287,21 +287,21 @@ these two interfaces again in a moment.
 
 ---
 
-## The one rule
+## La única regla
 
-# Dependencies point inward.
-
-<br>
-
-In the core, that means:
-
-- no `org.springframework.*`
-- no `jakarta.persistence.*`
-- no HTTP status in exceptions
+# Las dependencias apuntan hacia adentro.
 
 <br>
 
-<span class="muted">Later as an executable test.</span>
+En el core, eso significa:
+
+- no hay `org.springframework.*`
+- no hay `jakarta.persistence.*`
+- No hay estado HTTP en las excepciones
+
+<br>
+
+<span class="muted">Posteriormente, como una prueba ejecutable.</span>
 
 <!--
 If only one sentence sticks today, it's this one.
@@ -318,12 +318,12 @@ compiler-hard.
 
 ---
 
-## Why this works: Dependency Inversion
+## Por qué funciona: DI, Inversión de dependencias
 
 <div class="cols">
 <div>
 
-**Before**
+**Antes**
 
 ```
 Service ──────▶ StripeClient
@@ -333,7 +333,7 @@ Service ──────▶ StripeClient
 </div>
 <div>
 
-**After**
+**Después**
 
 ```
 Service ─────▶ PaymentPort
@@ -349,7 +349,7 @@ Service ─────▶ PaymentPort
 
 <br>
 
-> Hexagonal = **DIP, applied consistently to every system boundary.**
+> Hexagonal = **DIP, aplicado de forma consistente a cada límite del sistema.**
 
 <!--
 For experienced devs, this is the "oh, I see" moment: The pattern isn't new.
@@ -369,11 +369,11 @@ interface lives (in the core) and WHAT it's called (domain language).
 
 <!-- _class: lead -->
 
-# The code — in its pure form
+# El código — en su forma pura
 
-## Order service: place, query, cancel
+## Order service (Servicio de pedidos): realizar, consultar, cancelar
 
-<span class="muted">Project `example-pure` · only ports & adapters · 22 tests</span>
+<span class="muted">Proyecto `hexagonal-pure` · solo puertos y adaptadores · 22 pruebas</span>
 
 <!--
 From here on, ideally switch to the IDE in parallel. All snippets are copied
@@ -391,10 +391,10 @@ exactly the order you build it in, too.
 
 ---
 
-## Package structure
+## Estructura del paquete
 
 ```
-com.example.orders
+com.hexagonal.orders
 ├── domain                Order, OrderLine, OrderStatus
 ├── application
 │   ├── port.in           OrderService
@@ -424,7 +424,7 @@ classes from eight domains in a single adapter.out.persistence.
 ---
 <!-- _class: code -->
 
-## The domain: own types, no technology
+## El dominio: tipos propios, sin tecnología
 
 ```java
 public class Order {                       // no @Entity, no Spring
@@ -446,8 +446,8 @@ public record OrderLine(String productId, int quantity, BigDecimal unitPrice) {
 }
 ```
 
-- Imports: only `java.*`
-- Rules live in the service (for now)
+- Imports: solamente `java.*`
+- Las reglas están disponibles en el servicio (por ahora).
 
 <!--
 Deliberately unspectacular: a data holder with setters plus a record. This is
@@ -466,7 +466,7 @@ stage 3. Deliberately plant this thread here and pick it up again at the end.
 ---
 <!-- _class: code -->
 
-## The core: plain Java
+## El core (núcleo): Java puro
 
 <style scoped>pre { font-size: 15px; }</style>
 
@@ -519,7 +519,7 @@ discussion.
 ---
 <!-- _class: code -->
 
-## "So where is Spring now?"
+## "Y dónde está el Spring ahora?"
 
 <div class="cols">
 <div>
@@ -560,8 +560,8 @@ public class TransactionalOrderService
 
 <br>
 
-- **One** class wires core and framework together
-- Transaction = decorator at the driving port
+- **Única** clase que conecta el núcleo y el marco (Spring).
+- Transaction =  decorador en el driving port
 
 <!--
 Left: The only place where core and framework meet. The core itself stays
@@ -582,7 +582,7 @@ conscious decision, not a matter of faith.
 ---
 <!-- _class: code -->
 
-## Driving adapter: HTTP stays outside
+## Driving adapter: HTTP permanece fuera
 
 <style scoped>pre { font-size: 15px; }</style>
 
@@ -609,8 +609,8 @@ class OrderExceptionHandler {
 }
 ```
 
-- Its own request DTO, its own mapper
-- Business error → status code: **only here**
+- Su propio DTO de solicitud, su propio mapeador
+- Error de negocio → código de estado:: **sólo aquí**
 
 <!--
 The controller is thin: map, call, choose a status code. An adapter is not
@@ -632,7 +632,7 @@ localhost:8080/swagger-ui.html. Can be shown live.
 ---
 <!-- _class: code -->
 
-## Driven adapter: its own persistence model
+## Driven adapter: su propio modelo de persistencia
 
 <style scoped>pre { font-size: 16px; }</style>
 
@@ -661,7 +661,7 @@ class OrderPersistenceAdapter implements OrderRepository {
 }
 ```
 
-- Price: one mapper · Benefit: schema ≠ domain
+- Precio: único mapper · Beneficio: esquema ≠ dominio
 
 <!--
 The adapter implements the core's port (OrderRepository) and behind it uses
@@ -689,7 +689,7 @@ with that the dependency direction would be flipped again.
 ---
 <!-- _class: code -->
 
-## The moment it pays off
+## El momento en que da sus frutos
 
 ```java
 @Component @Profile("!demo")
@@ -729,19 +729,19 @@ one comes right away with the tests.
 
 ---
 
-## What the structure does to the tests
+## Lo que la estructura le hace a las pruebas
 
-| Test | Needs | Tests | Runtime |
+| Test | Necesita de | Tests | Tiempo de ejecución |
 |---|---|---|---|
-| `DefaultOrderServiceTest` | fakes, no Spring | 7 | **~0.01 s** |
+| `DefaultOrderServiceTest` | falsas, no hay Spring | 7 | **~0.01 s** |
 | `OrderControllerTest` | `@WebMvcTest` | 5 | ~0.4 s |
 | `OrderPersistenceAdapterTest` | `@DataJpaTest` + H2 | 2 | ~0.1 s |
-| `OrdersApplicationSmokeTest` | whole app, profile `demo` | 1 | ~1.7 s |
+| `OrdersApplicationSmokeTest` | App completa, perfil `demo` | 1 | ~1.7 s |
 | `HexagonalArchitectureTest` | ArchUnit | 7 | ~0.4 s |
 
 <br>
 
-> Business logic: milliseconds. Technology: seconds — and it rarely changes.
+> Lógica de negocio: milisegundos. Tecnología: segundos, y rara vez cambia.
 
 <!--
 Numbers from the real build of example-pure, not estimated.
@@ -757,7 +757,7 @@ For this audience, this is the strongest single argument of the talk.
 ---
 <!-- _class: code -->
 
-## Core test: fakes instead of a mocking framework
+## Core test: simulaciones en lugar de un mocking framework
 
 ```java
 @BeforeEach void setUp() {
@@ -796,7 +796,7 @@ the same test would be an integration test with WireMock and H2.
 ---
 <!-- _class: code -->
 
-## The rule becomes executable: ArchUnit
+## La regla se vuelve ejecutable: ArchUnit
 
 ```java
 @ArchTest
@@ -819,7 +819,7 @@ static final ArchRule application_knows_no_adapters =
 
 <br>
 
-> Without a test, every architecture erodes — the shortcut import always wins.
+> Sin pruebas, toda arquitectura se deteriora: la importación de atajos siempre gana.
 
 <!--
 The dependency rule from earlier, now as a test in the normal build. Runs
@@ -836,16 +836,16 @@ isn't in the build no longer exists after three sprints.
 
 ---
 
-## Interim conclusion: that was already everything
+## Conclusión provisional: eso ya era todo.
 
-- Ports: the core dictates the interfaces
-- Adapters: technology stays outside
-- One wiring point
-- The rule in the build
+- Puertos: el núcleo determina las interfaces.
+- Adapters (Adaptadores): la tecnología se queda fuera
+- Único punto de cableado
+- La regla en la construcción
 
 <br>
 
-> Hexagonal demands nothing more. **Everything else is expansion stages.**
+> Hexagonal no exige nada más. **Todo lo demás son etapas de expansión**.
 
 <!--
 Let it sink in briefly. The hexagon in its pure form is remarkably small:
@@ -860,19 +860,19 @@ what we look at now - as conscious decisions, not as a mandatory program.
 
 ---
 
-## Family relationships
+## Relaciones familiares
 
-| | Core statement | Adds |
+| | Declaración Core | Agrega |
 |---|---|---|
-| **Hexagonal** (2005) | Ports & Adapters | — the foundation |
-| **Onion** (2008) | concentric rings | named layers inside the core |
-| **Clean** (2012) | the same rule | use cases, commands, canonical terms |
-| **DDD** (2003) | domain logic in the core | aggregates, value objects, events |
+| **Hexagonal** (2005) | Puertos y adaptadores | — lo fundamental |
+| **Onion** (2008) | anillos concéntricos | capas (layers) nombradas dentro del núcleo |
+| **Clean** (2012) | la misma regla | casos de uso, comandos, términos canónicos |
+| **DDD** (2003) | lógica de dominio en el núcleo (core) | agregados, objetos de valor, eventos |
 
 <br>
 
-> The dependency rule is the same in all of them.
-> Shown so far: the pure form. Now: the two expansion stages.
+> La regla de dependencia es la misma en todos ellos. Hasta ahora se ha mostrado la forma pura.
+> Ahora: las dos etapas de expansión.
 
 <!--
 This slide saves 10 minutes of terminology debate. If someone asks "so is
@@ -896,7 +896,7 @@ example-clean, example-ddd - same business logic, same HTTP API, diffable.
 ---
 <!-- _class: code -->
 
-## Stage 2 — Clean Architecture: use cases + commands
+## Stage 2 — Arquitectura limpia: casos de uso + comandos
 
 <div class="cols">
 <div>
@@ -940,8 +940,8 @@ cancelOrder.cancelOrder(
 
 <br>
 
-- One port **per use case** instead of `OrderService` — ISP, CQS
-- Command instead of a parameter list
+- Un único puerto **por caso de uso** en lugar de `OrderService` — ISP, CQS
+- Comando en lugar de una lista de parámetros
 
 <!--
 The delta from pure to clean - project example-clean, same core, different
@@ -965,7 +965,7 @@ on empty - which is why it's an expansion stage, not mandatory.
 ---
 <!-- _class: code -->
 
-## Stage 3 — DDD: the aggregate takes over the rules
+## Etapa 3 — DDD: el agregado toma el control de las reglas
 
 <style scoped>pre { font-size: 15px; }</style>
 
@@ -991,8 +991,8 @@ public class Order extends AggregateRoot {          // project example-ddd
 }
 ```
 
-- No setters — state transitions with preconditions
-- `Money`, `OrderId` instead of `BigDecimal`, `UUID`
+- Sin métodos setters: transiciones de estado con precondiciones.
+- `Money`, `OrderId` en lugar de `BigDecimal`, `UUID`
 
 <!--
 Now the thread from the domain slide closes: In pure, Order was a data
@@ -1019,7 +1019,7 @@ business-related.
 ---
 <!-- _class: code -->
 
-## Stage 3 — DDD: domain events
+## Stage 3 — DDD: eventos de dominio
 
 <style scoped>pre { font-size: 16px; }</style>
 
@@ -1040,8 +1040,8 @@ saveOrderPort.save(order);
 eventPublisher.publish(order.pullDomainEvents());
 ```
 
-- Aggregate **collects**, service **dispatches** — after saving
-- `OrderPaid` → `shipping` creates a shipment, `orders` knows nothing about it
+- Aggregate **resopila**, service **despacha** — después de guardar
+- `OrderPaid` → `shipping` crea un envío, `orders` no sabe nada al respecto.
 
 <!--
 A domain event is a statement about something that happened - past tense,
@@ -1061,7 +1061,7 @@ second business area in the project shows that.
 ---
 <!-- _class: code -->
 
-## Stage 3 — DDD: who reacts to the event
+## Etapa 3 — DDD: quién reacciona al evento
 
 <style scoped>pre { font-size: 15px; }</style>
 
@@ -1085,9 +1085,9 @@ class OrderPaidListener {                                    // in the shipping 
 }
 ```
 
-- Spring dispatches **by parameter type** — in-process, buffered until commit
-- `shipping` reacts — `orders` knows nothing about it (ArchUnit enforces this)
-- No delivery guarantee → that's what the outbox is for (same port, 2nd adapter)
+- Spring realiza los despachos p**or tipo de parámetro**: en proceso, almacenado en búfer hasta la confirmación.
+- `shipping` reacciona a — `orders` no sabe nada al respecto (ArchUnit impone esto)
+- Sin garantía de entrega → para eso sirve la caja de salida (mismo puerto, segundo adapter)
 
 <!--
 The payoff moment of the events: A second business area, shipping, hooks
@@ -1139,7 +1139,7 @@ dive: the pitfalls deck).
 ---
 <!-- _class: code -->
 
-## Stage 3 — DDD: outbox, when delivery must be guaranteed
+## Etapa 3 — DDD: bandeja de salida, cuando la entrega debe estar garantizada.
 
 <style scoped>pre { font-size: 16px; }</style>
 
@@ -1160,9 +1160,9 @@ void dispatch() {
 }
 ```
 
-- The event lands in the table **within the same transaction** — both or nothing
-- The relay delivers: **at least once** → consumers must be idempotent
-- Switched via profile — the core notices nothing
+- El evento se registra en la tabla **dentro de la misma transacción**: ambos o ninguno.
+- El relé entrega: **al menos una vez** → los consumidores deben ser idempotentes
+- Cambiado a través del perfil: el núcleo (core) no detecta nada.
 
 <!--
 Why is this needed? The Spring event bus is in-process without guarantees:
@@ -1194,18 +1194,18 @@ example as teaching material.
 
 ---
 
-## Three stages, three projects
+## Tres etapas, tres proyectos
 
-| Stage | Project | Adds | Tests |
+| Etapa | Proyecto | Agrega | Tests |
 |---|---|---|---|
-| 1 · Hexagonal pure | `example-pure` | ports, adapters, DIP | 22 |
-| 2 · Clean | `example-clean` | use cases, commands | 23 |
-| 3 · DDD + events | `example-ddd` | aggregate, value objects, events, outbox | 41 |
+| 1 · Hexagonal puro | `hexagonal-pure` | puertos, adaptadores, DIP | 22 |
+| 2 · Clean | `hexagonal-clean` | casos de uso, comandos | 23 |
+| 3 · DDD + eventos | `hexagonal-ddd` | agregados, objetos de valor, eventos, outbox | 41 |
 
 <br>
 
-- Same business logic, same HTTP API — **diffable**
-- Each stage: `mvn spring-boot:run -Dspring-boot.run.profiles=demo` + Swagger UI
+- Misma lógica de negocio, misma API HTTP: **diferenciable**.
+- Cada etapa: `mvn spring-boot:run -Dspring-boot.run.profiles=demo` + Swagger UI
 
 <!--
 The map to take home: All three projects sit side by side in the repository
@@ -1225,30 +1225,30 @@ third-party systems. That's the core - everything else is negotiable.
 
 ---
 
-## When is what worth it?
+## ¿Cuándo merece la pena hacer algo?
 
 <div class="cols">
 <div>
 
-### Yes
-- real business rules, long lifespan
-- multiple inbound channels
-- swappable external integrations
+### Sí
+- Reglas de negocios reales, larga vida útil
+- múltiples canales de entrada
+- integraciones externas intercambiables
 
 </div>
 <div>
 
-### Probably not
-- CRUD over a single table
-- prototype, throwaway service
-- pure data transformation
+### Probablemente no
+- CRUD sobre una sola tabla
+- prototipo, servicio desechable
+- transformación pura de datos
 
 </div>
 </div>
 
 <br>
 
-> Non-negotiable: dependency rule, ports for third-party systems, separate persistence model.
+> No-negociable: regla de dependencia, puertos para sistemas de terceros, modelo de persistencia independiente.
 
 <!--
 Spell out the left side: business logic with real rules and states, a
@@ -1267,15 +1267,15 @@ important spot.
 
 ---
 
-## Three sentences to take home
+## Tres frases para llevarse a casa
 
 <br>
 
-### 1. Dependencies point inward.
+### 1. Las dependencias apuntan hacia adentro.
 
-### 2. The core dictates the interfaces — `PaymentPort`, not `StripeClient`.
+### 2. El núcleo dicta las interfaces  — `PaymentPort`, no `StripeClient`.
 
-### 3. Clean and DDD are expansion stages — not mandatory, but an answer to real pain.
+### 3. Clean y DDD son etapas de expansión; no son obligatorias, pero sí una respuesta a un dolor real.
 
 <!--
 Pause briefly and let the three sentences sink in before opening the
@@ -1291,7 +1291,7 @@ top.
 
 <!-- _class: lead -->
 
-# Discussion
+# Discusión
 
 <!--
 From here on, moderate, don't lecture. The questions on the next slide are
@@ -1302,13 +1302,13 @@ Detailed moderation guide with counterarguments: course-material/moderation.md
 
 ---
 
-## Where do we start?
+## ¿Por dónde empezamos?
 
-- Where does the dependency rule break in our code today — and what did that cost us most recently?
-- Which stage fits which of our services?
-- A separate persistence model, or the JPA entity in the core?
-- `charge()` runs inside the transaction — now what?
-- Do we introduce ArchUnit — and who fixes the first red build?
+- ¿Dónde se incumple la regla de dependencia en nuestro código actual y cuál ha sido el coste más reciente?
+- ¿Qué etapa se ajusta mejor a cada uno de nuestros servicios?
+- ¿Un modelo de persistencia independiente o la entidad JPA en el núcleo?
+- `charge()` se ejecuta dentro de la transacción, ¿y ahora qué?
+- ¿Presentamos ArchUnit? ¿Y quién soluciona el primer error de compilación?
 
 <!--
 Don't go through all the questions - two or three in depth are worth more.
@@ -1325,7 +1325,7 @@ Don't resolve it yourself - let them discuss.
 
 ---
 
-## Further reading
+## Lecturas adicionales
 
 <div class="small">
 
@@ -1343,7 +1343,7 @@ Don't resolve it yourself - let them discuss.
 
 <br>
 
-<span class="muted">Repository: `example-pure` · `example-clean` · `example-ddd` + script + moderation guide</span>
+<span class="muted">Repository: `hexagonal-pure` · `hexagonal-clean` · `haxagonal-ddd` + script + guía de moderación</span>
 
 <!--
 If only one book: Hombergs. Short, Java, covers exactly the everyday
